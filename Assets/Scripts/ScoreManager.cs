@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class ScoreManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class ScoreManager : MonoBehaviour {
+
+    public static ScoreManager instance;
+    [SerializeField] private TextMeshProUGUI pointText;
+
+    private int pointScore;
+
+    private void Awake() {
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Start() {
+        pointText.text = pointScore.ToString();
+    }
+
+    public void AddPoint() {
+        pointScore++;
+        pointText.text = pointScore.ToString();
     }
 }

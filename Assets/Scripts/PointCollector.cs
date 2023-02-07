@@ -2,13 +2,14 @@ using UnityEngine;
 
 //name of class shows it's attached to an object that will collect points
 public class PointCollector : MonoBehaviour {
-    private int pointCount;
+    //private int pointCount;
 
     private void OnTriggerEnter(Collider other) {
         Collectable c = other.GetComponent<Collectable>();
         if (c != null) {
-            pointCount++;
-            Debug.Log("Points: " + pointCount);
+            ScoreManager.instance.AddPoint();
+            //pointCount++;
+            //Debug.Log("Points: " + pointCount);
             GameObject.Destroy(other.gameObject);
         }
     }

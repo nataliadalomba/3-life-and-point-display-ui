@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GridMovement : MonoBehaviour {
@@ -8,10 +7,13 @@ public class GridMovement : MonoBehaviour {
     [SerializeField] private float backBoundary = -13f;
     [SerializeField] private float rightBoundary = 13f;
 
+    //[SerializeField] private Transform respawnPoint;
+
     private bool isMoving;
 
     //time it takes for player to move from originalPosition to targetPosition. In seconds (so 1/5th of a second)
     private float timeToMove = 0.2f;
+
 
     void Update() {
 
@@ -42,7 +44,6 @@ public class GridMovement : MonoBehaviour {
                 yield return null;
             }
         }
-
         transform.position = ValidateGridPosition(targetPosition);
 
         isMoving = false;
@@ -60,4 +61,10 @@ public class GridMovement : MonoBehaviour {
         }
         return position;
     }
+
+    //private void OnTriggerEnter(Collider other) {
+    //    Hazard h = other.GetComponent<Hazard>();
+    //    if (h != null)
+    //    this.transform.position = respawnPoint.transform.position;
+    //}
 }
