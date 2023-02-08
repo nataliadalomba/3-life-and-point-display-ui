@@ -1341,6 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60817c0c86f599489a940f904b797ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 685409586}
   forwardBoundary: 13
   leftBoundary: -13
   backBoundary: -13
@@ -2618,7 +2619,7 @@ PrefabInstance:
     - target: {fileID: 7830838815593573734, guid: a016a602d683f7a42a8df023bc2b2e4e, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 652464736}
     - target: {fileID: 7830838815593573734, guid: a016a602d683f7a42a8df023bc2b2e4e, type: 3}
       propertyPath: respawnPoint
       value: 

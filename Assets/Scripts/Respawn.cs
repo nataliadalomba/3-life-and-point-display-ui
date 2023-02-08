@@ -8,6 +8,8 @@ public class Respawn : MonoBehaviour {
         Debug.Log("We've collided!");
         Player p = other.GetComponent<Player>();
         if (p != null)
+            FindObjectOfType<GridMovement>().stopMovePlayer();
             player.transform.position = respawnPoint.transform.position;
+            FindObjectOfType<GridMovement>().startMovePlayer();
     }
 }

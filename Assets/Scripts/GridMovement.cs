@@ -1,19 +1,20 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class GridMovement : MonoBehaviour {
+    public Coroutine movePlayerCoroutine;
+
+    [SerializeField] private Transform respawnPoint;
     [SerializeField] private float forwardBoundary = 13f;
     [SerializeField] private float leftBoundary = -13f;
     [SerializeField] private float backBoundary = -13f;
     [SerializeField] private float rightBoundary = 13f;
 
-    //[SerializeField] private Transform respawnPoint;
-
     private bool isMoving;
 
     //time it takes for player to move from originalPosition to targetPosition. In seconds (so 1/5th of a second)
     private float timeToMove = 0.2f;
-
 
     void Update() {
 
@@ -23,9 +24,9 @@ public class GridMovement : MonoBehaviour {
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) StartMove(Vector3.right);
     }
 
-    private bool StartMove(Vector3 direction) {
+    public bool StartMove(Vector3 direction) {
         if (isMoving) return false;
-        StartCoroutine(MovePlayer(direction));
+        movePlayerCoroutine = StartCoroutine(MovePlayer(direction));
         return true;
     }
 
@@ -49,6 +50,14 @@ public class GridMovement : MonoBehaviour {
         isMoving = false;
     }
 
+    public void stopMovePlayer() {
+        StopCoroutine(movePlayerCoroutine);
+    }
+
+    public void startMovePlayer() {
+        StartCoroutine(MovePlayer(this.transform.position));
+    }
+
     private Vector3 ValidateGridPosition(Vector3 position) {
         if (position.x > rightBoundary) {
             position.x = rightBoundary;
@@ -61,10 +70,4 @@ public class GridMovement : MonoBehaviour {
         }
         return position;
     }
-
-    //private void OnTriggerEnter(Collider other) {
-    //    Hazard h = other.GetComponent<Hazard>();
-    //    if (h != null)
-    //    this.transform.position = respawnPoint.transform.position;
-    //}
 }
