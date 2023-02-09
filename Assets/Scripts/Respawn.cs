@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Respawn : MonoBehaviour {
@@ -6,10 +7,12 @@ public class Respawn : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         Player p = other.GetComponent<Player>();
-        if (p != null)
+        if (p != null) {
             FindObjectOfType<GridMovement>().stopMovePlayer();
             player.transform.position = respawnPoint.transform.position;
             ScoreManager.instance.SubtractLife();
+        if (ScoreManager.instance.PlayerDeath()) return;
             FindObjectOfType<GridMovement>().startMovePlayer();
+        }
     }
 }

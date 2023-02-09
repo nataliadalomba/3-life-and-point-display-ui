@@ -4,10 +4,12 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour {
 
+    public bool zeroLivesLeft;
     public static ScoreManager instance;
     public int livesLost;
     [SerializeField] private TextMeshProUGUI pointText;
     [SerializeField] private Image[] lives;
+    [SerializeField] private Image gameOverScreen;
 
     private int pointScore;
 
@@ -17,11 +19,9 @@ public class ScoreManager : MonoBehaviour {
 
     private void Start() {
         pointText.text = pointScore.ToString();
-        lives[0].enabled = true;
-        lives[1].enabled = true;
-        lives[2].enabled = true;
-        lives[3].enabled = true;
-        lives[4].enabled = true;
+        for (int i = 0; i < lives.Length; i++) {
+            lives[i].enabled = true;
+        }
     }
 
     public void AddPoint() {
@@ -29,57 +29,68 @@ public class ScoreManager : MonoBehaviour {
         pointText.text = pointScore.ToString();
     }
 
-    public void SubtractLife() {
+    public bool SubtractLife() {
         int i = 4;
         i -= livesLost;
-            switch (i) {
-                case 4:
-                    lives[0].enabled = true;
-                    lives[1].enabled = true;
-                    lives[2].enabled = true;
-                    lives[3].enabled = true;
-                    lives[4].enabled = false;
-                    livesLost = 1;
-                    i -= livesLost;
-                    break;
+        switch (i) {
+            case 4:
+                lives[0].enabled = true;
+                lives[1].enabled = true;
+                lives[2].enabled = true;
+                lives[3].enabled = true;
+                lives[4].enabled = false;
+                livesLost = 1;
+                i -= livesLost;
+                return zeroLivesLeft = false;
 
-                case 3:
-                    lives[0].enabled = true;
-                    lives[1].enabled = true;
-                    lives[2].enabled = true;
-                    lives[3].enabled = false;
-                    lives[4].enabled = false;
-                    livesLost = 2;
-                    i -= livesLost;
-                    break;
+            case 3:
+                lives[0].enabled = true;
+                lives[1].enabled = true;
+                lives[2].enabled = true;
+                lives[3].enabled = false;
+                lives[4].enabled = false;
+                livesLost = 2;
+                i -= livesLost;
+                return zeroLivesLeft = false;
 
-                case 2:
-                    lives[0].enabled = true;
-                    lives[1].enabled = true;
-                    lives[2].enabled = false;
-                    lives[3].enabled = false;
-                    lives[4].enabled = false;
-                    livesLost = 3;
-                    i -= livesLost;
-                    break;
+            case 2:
+                lives[0].enabled = true;
+                lives[1].enabled = true;
+                lives[2].enabled = false;
+                lives[3].enabled = false;
+                lives[4].enabled = false;
+                livesLost = 3;
+                i -= livesLost;
+                return zeroLivesLeft = false;
 
-                case 1:
-                    lives[0].enabled = true;
-                    lives[1].enabled = false;
-                    lives[2].enabled = false;
-                    lives[3].enabled = false;
-                    lives[4].enabled = false;
-                    livesLost = 4;
-                    i -= livesLost;
-                    break;
+            case 1:
+                lives[0].enabled = true;
+                lives[1].enabled = false;
+                lives[2].enabled = false;
+                lives[3].enabled = false;
+                lives[4].enabled = false;
+                livesLost = 4;
+                i -= livesLost;
+                return zeroLivesLeft = false;
 
-                case 0:
-                    lives[0].enabled = false;
-                    lives[1].enabled = false;
-                    lives[2].enabled = false;
-                    lives[3].enabled = false;
-                    lives[4].enabled = false;
-                    break;
+            case 0:
+                lives[0].enabled = false;
+                lives[1].enabled = false;
+                lives[2].enabled = false;
+                lives[3].enabled = false;
+                lives[4].enabled = false;
+                return zeroLivesLeft = true;
+            
+            default:
+                return zeroLivesLeft = false;
+        }
+    }
+
+    public bool PlayerDeath() {
+            if (zeroLivesLeft == true) {
+                gameOverScreen.gameObject.SetActive(true);
+                return true;
             }
+        return false;
     }
 }
