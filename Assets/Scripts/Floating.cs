@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Floating : MonoBehaviour {
 
-    public float verticalSpeed;
-    public float amplitude; //how high object can get
+    [SerializeField] private float verticalSpeed;
+    [SerializeField] private float amplitude; //how high object can get
 
-    public Vector3 tempPos;
+    private Vector3 originalPos;
+    private Vector3 tempPos;
+        private static System.Random rnd = new System.Random();
 
     void Start() {
-        tempPos = new Vector3 (transform.position.x, transform.position.y+2, transform.position.z);
+        tempPos = originalPos = new Vector3(transform.position.x, (float)rnd.NextDouble() + .3f, transform.position.z);
+        verticalSpeed = (float)rnd.NextDouble();
     }
 
     void FixedUpdate() {
-        tempPos.y = Mathf.Sin(Time.realtimeSinceStartup * verticalSpeed) * amplitude;
+        tempPos = originalPos;
+        tempPos.y += Mathf.Sin(Time.realtimeSinceStartup * (verticalSpeed + 3)) * amplitude;
         transform.position = tempPos;
     }
 }
