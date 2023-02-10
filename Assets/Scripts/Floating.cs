@@ -9,7 +9,7 @@ public class Floating : MonoBehaviour {
 
     private Vector3 originalPos;
     private Vector3 tempPos;
-        private static System.Random rnd = new System.Random();
+    private static System.Random rnd = new System.Random();
 
     void Start() {
         tempPos = originalPos = new Vector3(transform.position.x, (float)rnd.NextDouble() + .3f, transform.position.z);
