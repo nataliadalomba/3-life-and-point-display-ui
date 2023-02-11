@@ -2,8 +2,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Respawn : MonoBehaviour {
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform respawnPoint;
+    private Transform player;
+    private Transform respawnPoint;
+
+    private void Start() {
+        player = FindObjectOfType<Player>().transform;
+        respawnPoint = FindObjectOfType<RespawnPoint>().transform;
+    }
 
     private void OnTriggerEnter(Collider other) {
         Player p = other.GetComponent<Player>();

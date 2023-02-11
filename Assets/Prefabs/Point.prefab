@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalSpeed: 0.96
-  amplitude: -0.19
+  amplitude: 0.1
 --- !u!108 &-248449619960247861
 Light:
   m_ObjectHideFlags: 0

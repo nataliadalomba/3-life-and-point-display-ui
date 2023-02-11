@@ -5,31 +5,35 @@ public class Hazard : MonoBehaviour {
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float amplitude;
 
-    private Vector3 originalPos;
+    private Vector3 origPos;
     private Vector3 tempPos;
 
-    private Quaternion originalRot;
+    private Quaternion origRot;
     private Quaternion tempRot;
 
     private static System.Random rnd = new System.Random();
 
     private void Start () {
-        tempPos = originalPos = new Vector3(transform.position.x, (float) rnd.NextDouble() + .3f, transform.position.z);
+        tempPos = origPos = new Vector3(transform.position.x, (float) rnd.NextDouble() + .3f, transform.position.z);
         verticalSpeed = (float)rnd.NextDouble();
 
-        tempRot = originalRot;
+        tempRot = origRot = transform.rotation;
     }
 
     private void FixedUpdate() {
-        tempPos = originalPos;
-        tempRot = originalRot = transform.rotation;
+        RandomFloating();
+        tempRot = origRot = transform.rotation;
 
         float elapsedTime = 0;
 
+        transform.rotation = Quaternion.Lerp(origRot, tempRot, (elapsedTime));
+        elapsedTime += Time.deltaTime;
+    }
+
+    private void RandomFloating() {
+        tempPos = origPos;
         tempPos.y += Mathf.Sin(Time.realtimeSinceStartup * (verticalSpeed + 2)) * amplitude;
         transform.position = tempPos;
 
-        transform.rotation = Quaternion.Lerp(originalRot, tempRot, (elapsedTime));
-        elapsedTime += Time.deltaTime;
     }
 }

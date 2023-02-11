@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d669468a4c39741897f04610fee6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 0
-  amplitude: 0
+  verticalSpeed: 0.7
+  amplitude: 0.2
 --- !u!65 &8002857003604916638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -125,5 +125,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1afc7bd02bbd8342b92dafc70699c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  respawnPoint: {fileID: 0}
