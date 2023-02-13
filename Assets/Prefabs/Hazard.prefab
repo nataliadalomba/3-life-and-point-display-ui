@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalSpeed: 0.7
   amplitude: 0.2
+  rotSpeed: 60
 --- !u!65 &8002857003604916638
 BoxCollider:
   m_ObjectHideFlags: 0
