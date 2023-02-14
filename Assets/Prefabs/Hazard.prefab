@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1976086851074404882}
   - component: {fileID: 3513258145989531383}
   - component: {fileID: 1166391698324779805}
-  - component: {fileID: 8002857003604916638}
   - component: {fileID: 7830838815593573734}
+  - component: {fileID: 5147494618124472326}
   m_Layer: 0
   m_Name: Hazard
   m_TagString: Untagged
@@ -101,19 +101,6 @@ MonoBehaviour:
   verticalSpeed: 0.7
   amplitude: 0.2
   rotSpeed: 60
---- !u!65 &8002857003604916638
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527444359074912699}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.85208553, y: 5, z: 0.8520856}
-  m_Center: {x: 0.000000029802322, y: 0, z: 0}
 --- !u!114 &7830838815593573734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,3 +113,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1afc7bd02bbd8342b92dafc70699c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &5147494618124472326
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527444359074912699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4260428
+  m_Center: {x: 0.000000029802322, y: 0, z: 0}

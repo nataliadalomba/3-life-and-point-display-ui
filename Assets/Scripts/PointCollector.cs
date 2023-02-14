@@ -7,6 +7,8 @@ public class PointCollector : MonoBehaviour {
         Collectable c = other.GetComponent<Collectable>();
         if (c != null) {
             ScoreManager.instance.AddPoint();
+
+            FindObjectOfType<AudioManager>().Play("Pickup Point");
             GameObject.Destroy(other.gameObject);
         }
     }
