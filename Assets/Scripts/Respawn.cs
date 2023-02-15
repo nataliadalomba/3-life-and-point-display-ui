@@ -15,6 +15,7 @@ public class Respawn : MonoBehaviour {
         if (p != null) {
             FindObjectOfType<GridMovement>().stopMovePlayer();
             player.transform.position = respawnPoint.transform.position;
+            FindObjectOfType<AudioManager>().Play("Damage Player");
             ScoreManager.instance.SubtractLife();
         if (ScoreManager.instance.PlayerDeath()) return;
             FindObjectOfType<GridMovement>().startMovePlayer();

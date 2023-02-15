@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7675597700788332475, guid: a016a602d683f7a42a8df023bc2b2e4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7675597700788332475, guid: a016a602d683f7a42a8df023bc2b2e4e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1279,7 +1279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7675597700788332475, guid: a016a602d683f7a42a8df023bc2b2e4e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7675597700788332475, guid: a016a602d683f7a42a8df023bc2b2e4e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2557,8 +2557,18 @@ MonoBehaviour:
   sounds:
   - name: Pickup Point
     clip: {fileID: 8300000, guid: 65699bd309eb9d3498b907c00e5f8de1, type: 3}
-    volume: 0.579
-    pitch: 3
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: Damage Player
+    clip: {fileID: 8300000, guid: ad5f0161e0c2bc94492439a247bed102, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: Game Over
+    clip: {fileID: 8300000, guid: aff02ef88918ded4c982b87ef3a9f63a, type: 3}
+    volume: 0.5
+    pitch: 1
     source: {fileID: 0}
 --- !u!4 &1461708280
 Transform:

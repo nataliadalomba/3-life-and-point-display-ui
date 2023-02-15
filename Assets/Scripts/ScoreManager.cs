@@ -87,10 +87,11 @@ public class ScoreManager : MonoBehaviour {
     }
 
     public bool PlayerDeath() {
-            if (zeroLivesLeft == true) {
-                gameOverScreen.gameObject.SetActive(true);
-                return true;
-            }
+        if (zeroLivesLeft == true) {
+            gameOverScreen.gameObject.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("Game Over");
+            return true;
+        }
         return false;
     }
 }
