@@ -1,45 +1,37 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Hazard : MonoBehaviour {
+    [SerializeField] private float amplitude = 0.2f;
 
-    [SerializeField] private float verticalSpeed;
-    [SerializeField] private float amplitude;
+    [FormerlySerializedAs("rotSpeed")]
+    [SerializeField] private float angularSpeed = 60;
 
-    [SerializeField] private float rotSpeed;
+    [SerializeField] private Vector2 verticalSpeedRange = new Vector2(2, 3);
 
-    private Vector3 origPos;
-    private Vector3 tempPos;
+    private Vector3 originalPosition;
+    private float verticalSpeed;
+    private Vector3 rotationalAxis;
 
-    private Vector3 rot = new Vector3(45f, 45f, 45f);
-
-    private float rotDegreesPerSecond = 45f;
-
-    private static System.Random rndFloat = new System.Random();
-    private static System.Random rndRot = new System.Random();
-
-    private void Start () {
-        tempPos = origPos = new Vector3(transform.position.x, (float) rndFloat.NextDouble() + .3f, transform.position.z);
-        verticalSpeed = (float)rndFloat.NextDouble();
-
-        //rot = Quaternion.Euler((float)rndRot.NextDouble(), (float)rndRot.NextDouble(), (float)rndRot.NextDouble());
-
+    private void Start() {
+        originalPosition = transform.position;
+        verticalSpeed = Random.Range(verticalSpeedRange.x, verticalSpeedRange.y);
+        rotationalAxis = Random.onUnitSphere;
     }
 
-    private void FixedUpdate() {
-        RandomFloating();
-        Rotation();
+    private void Update() {
+        UpdatePosition();
+        UpdateRotation();
     }
 
-    private void RandomFloating() {
-        tempPos = origPos;
-        tempPos.y += Mathf.Sin(Time.realtimeSinceStartup * (verticalSpeed + 2)) * amplitude;
-        transform.position = tempPos;
+    private void UpdatePosition() {
+        Vector3 pos = originalPosition;
+        pos.y = originalPosition.y + amplitude * Mathf.Sin(Time.time * verticalSpeed);
+        transform.position = pos;
     }
 
-    private void Rotation() {
-        //float yAngle = transform.rotation.eulerAngles.y;
-
-        transform.rotation = Quaternion.Euler(rot * Time.deltaTime) * transform.rotation;
-        //transform.rotation = Quaternion.AngleAxis(yAngle + (Time.deltaTime * rotDegreesPerSecond), Vector3.up);
+    private void UpdateRotation() {
+        Quaternion deltaRotation = Quaternion.AngleAxis(angularSpeed * Time.deltaTime, rotationalAxis);
+        transform.rotation = deltaRotation * transform.rotation;
     }
 }
