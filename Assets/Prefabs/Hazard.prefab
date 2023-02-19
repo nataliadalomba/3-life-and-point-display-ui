@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d669468a4c39741897f04610fee6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 0.7
   amplitude: 0.2
-  rotSpeed: 60
+  angularSpeed: 60
+  verticalSpeedRange: {x: 2, y: 3}
 --- !u!114 &7830838815593573734
 MonoBehaviour:
   m_ObjectHideFlags: 0
